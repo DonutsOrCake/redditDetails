@@ -1,28 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hbe-aF-7yy">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Post List Table View Controller-->
         <scene sceneID="dSM-pq-Yvh">
             <objects>
-                <tableViewController id="hP3-q2-lhi" sceneMemberID="viewController">
+                <tableViewController id="hP3-q2-lhi" customClass="PostListTableViewController" customModule="redditDetails" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Gf-Zm-PD9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="cyI-eh-maK">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="129" id="cyI-eh-maK" customClass="PostTableViewCell" customModule="redditDetails" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="129"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cyI-eh-maK" id="Mjn-yU-tf5">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="129"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="i49-1G-Bzh">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="129"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noThumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="KeX-8P-lbt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="129"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="KeX-8P-lbt" secondAttribute="height" multiplier="1:1" constant="1" id="AY3-CH-t0O"/>
+                                                        <constraint firstAttribute="width" constant="150" id="pBi-19-j7G"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="SQm-sP-OPl">
+                                                    <rect key="frame" x="158" y="0.0" width="256" height="129"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FgZ-F2-iXj">
+                                                            <rect key="frame" x="0.0" y="0.0" width="256" height="129"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(title)" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3p-eA-znn">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="256" height="64.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(subreddit)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKs-uV-AtF">
+                                                                    <rect key="frame" x="0.0" y="64.5" width="256" height="64.5"/>
+                                                                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="FgZ-F2-iXj" firstAttribute="width" secondItem="SQm-sP-OPl" secondAttribute="width" id="Li1-p2-iP2"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="i49-1G-Bzh" secondAttribute="bottom" id="9Jm-3e-R3L"/>
+                                        <constraint firstItem="i49-1G-Bzh" firstAttribute="top" secondItem="Mjn-yU-tf5" secondAttribute="top" id="nBC-C0-yOx"/>
+                                        <constraint firstItem="i49-1G-Bzh" firstAttribute="leading" secondItem="Mjn-yU-tf5" secondAttribute="leading" id="vqg-iO-Kmv"/>
+                                        <constraint firstAttribute="trailing" secondItem="i49-1G-Bzh" secondAttribute="trailing" id="wyG-dm-Iy8"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="postImageView" destination="KeX-8P-lbt" id="tjq-2R-lxU"/>
+                                    <outlet property="postSubredditLabel" destination="DKs-uV-AtF" id="JvC-hk-DgQ"/>
+                                    <outlet property="postTitleLabel" destination="k3p-eA-znn" id="w9v-NE-UjW"/>
+                                    <segue destination="1Fy-Km-X0p" kind="show" identifier="toDetailVC" id="0ys-em-IDN"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -30,15 +84,106 @@
                             <outlet property="delegate" destination="hP3-q2-lhi" id="76D-sx-nQF"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="F4E-lR-mUG"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBJ-iF-Bk5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-37" y="73"/>
+            <point key="canvasLocation" x="872.46376811594212" y="72.991071428571431"/>
+        </scene>
+        <!--Post Detail View Controller-->
+        <scene sceneID="25M-HX-cW4">
+            <objects>
+                <viewController id="1Fy-Km-X0p" customClass="PostDetailViewController" customModule="redditDetails" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V74-OO-MK4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noThumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="CY3-3i-4Sx">
+                                <rect key="frame" x="0.0" y="88" width="414" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CY3-3i-4Sx" secondAttribute="height" multiplier="1:1" id="Ben-2q-Xpr"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="UeL-PV-08P">
+                                <rect key="frame" x="20.5" y="510" width="373" height="58"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(title)" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8QB-XO-2Wq">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="27.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(subreddit)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjS-vX-VPa">
+                                        <rect key="frame" x="0.0" y="30.5" width="373" height="27.5"/>
+                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(upvotes)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C51-SR-6n5">
+                                <rect key="frame" x="20" y="576" width="65.5" height="18"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65.5" id="ayA-72-1rn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ieI-aF-WWu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UeL-PV-08P" firstAttribute="top" secondItem="CY3-3i-4Sx" secondAttribute="bottom" constant="8" id="AKi-AI-urh"/>
+                            <constraint firstItem="C51-SR-6n5" firstAttribute="leading" secondItem="V74-OO-MK4" secondAttribute="leadingMargin" id="DEM-zF-abU"/>
+                            <constraint firstItem="UeL-PV-08P" firstAttribute="centerX" secondItem="ieI-aF-WWu" secondAttribute="centerX" id="JJj-pO-JQn"/>
+                            <constraint firstItem="UeL-PV-08P" firstAttribute="width" secondItem="V74-OO-MK4" secondAttribute="width" multiplier="0.9" id="Mq2-ZN-Bmu"/>
+                            <constraint firstItem="CY3-3i-4Sx" firstAttribute="top" secondItem="ieI-aF-WWu" secondAttribute="top" id="WnZ-bN-0Qa"/>
+                            <constraint firstItem="C51-SR-6n5" firstAttribute="top" secondItem="UeL-PV-08P" secondAttribute="bottom" constant="8" symbolic="YES" id="Y7A-gr-gne"/>
+                            <constraint firstItem="CY3-3i-4Sx" firstAttribute="trailing" secondItem="ieI-aF-WWu" secondAttribute="trailing" id="ZzE-Xs-W1l"/>
+                            <constraint firstItem="CY3-3i-4Sx" firstAttribute="leading" secondItem="ieI-aF-WWu" secondAttribute="leading" id="enh-kF-l0a"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="j8J-1k-whJ"/>
+                    <connections>
+                        <outlet property="postImageView" destination="CY3-3i-4Sx" id="0La-ak-fMt"/>
+                        <outlet property="postSubredditLabel" destination="kjS-vX-VPa" id="i3p-Pv-mFx"/>
+                        <outlet property="postTitleLabel" destination="8QB-XO-2Wq" id="8w1-6X-3VC"/>
+                        <outlet property="postUpvoteLabel" destination="C51-SR-6n5" id="pys-9i-5ER"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lj3-mB-lLJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1634.7826086956522" y="72.991071428571431"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fkU-rT-jF2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hbe-aF-7yy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fPw-WD-Mbb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hP3-q2-lhi" kind="relationship" relationship="rootViewController" id="6R9-uz-6Ls"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9FY-Wg-FUc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="106" y="73"/>
         </scene>
     </scenes>
     <resources>
+        <image name="noThumbnail" width="1920" height="1448"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
