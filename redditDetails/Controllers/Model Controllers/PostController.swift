@@ -9,10 +9,11 @@ import UIKit
 
 class PostController {
     
+    static let baseURL = URL(string: "https://www.reddit.com/user/NitroBoomer/m/ufos/.json")
+    
     static func fetchPosts(completion: @escaping (Result<[Post], PostError>) -> Void) {
         
-        //Saving just in case https://www.reddit.com/r/UFOs/.json
-        let baseURL = URL(string: "https://www.reddit.com/user/Lingenfelter/m/ufo/.json")
+        let baseURL = baseURL
         guard let finalURL = baseURL else {return completion(.failure(.invalidURL))}
         
         URLSession.shared.dataTask(with: finalURL) { data, response, error in
@@ -34,8 +35,8 @@ class PostController {
                 
                 var arrayOfPosts: [Post] = []
                 
-                for j in thirdLevelObject {
-                    let post = j.data
+                for post in thirdLevelObject {
+                    let post = post.data
                     arrayOfPosts.append(post)
                 }
                 completion(.success(arrayOfPosts))

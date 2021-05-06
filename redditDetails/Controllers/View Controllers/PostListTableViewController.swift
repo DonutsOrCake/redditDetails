@@ -49,14 +49,14 @@ class PostListTableViewController: UITableViewController {
     }
     
     // MARK: - Navigation
-    
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toDetailVC" {
-//            let cell = sender as! PostTableViewCell
-//            let vc = segue.destination as! PostDetailViewController
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailVC" {
+            
+            guard let indexPath = tableView.indexPathForSelectedRow,
+                  let destinationVC = segue.destination as? PostDetailViewController else {return}
+            
+            let selectedPost = posts[indexPath.row]
+            destinationVC.post = selectedPost
+        }
+    }
 }//End of class

@@ -18,17 +18,15 @@ class PostDetailViewController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
     }
 
     //MARK: - Properties
-    var post: Post? {
-        didSet {
-            updateViews()
-        }
-    }
+    var post: Post?
     
     //MARK: - Functions
     func updateViews() {
+        
         guard let post = post else {return}
         postTitleLabel.text = post.title
         postSubredditLabel.text = post.subreddit_name_prefixed
